@@ -5,7 +5,11 @@ namespace WaypointScripts
 {
     public class PathManager : MonoBehaviour
     {
-        [HideInInspector] [SerializeField] public List<Waypoint> path;
+        [HideInInspector] [SerializeField] private List<Waypoint> path;
+        [SerializeField] private GameObject prefab;
+        [SerializeField] private List<GameObject> prefabPoints;
+        
+        private int _currentPointIndex;
 
         public List<Waypoint> GetPath()
         {
@@ -21,6 +25,14 @@ namespace WaypointScripts
         {
             Waypoint go = new Waypoint();
             path.Add(go);
+        }
+
+        public Waypoint GetNextTarget()
+        {
+            int nextPointIndex = (_currentPointIndex + 1) % path.Count;
+            _currentPointIndex = nextPointIndex;
+            
+            return path[nextPointIndex];
         }
     }
 }

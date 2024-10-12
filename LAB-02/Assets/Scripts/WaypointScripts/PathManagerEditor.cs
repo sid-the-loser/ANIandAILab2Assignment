@@ -16,7 +16,7 @@ namespace WaypointScripts
         private Waypoint _selectedPoint = null;
         private bool _doRepaint = true;
 
-        private void OnScreenGUI()
+        private void OnSceneGUI()
         {
             thePath = pathManager.GetPath();
             DrawPath(thePath);
@@ -58,15 +58,21 @@ namespace WaypointScripts
                     EditorGUILayout.BeginHorizontal();
                     Waypoint p = thePath[i];
 
+                    Color c = GUI.color;
+                    if (_selectedPoint == p) GUI.color = Color.green;
+
                     Vector3 oldPos = p.GetPos();
                     Vector3 newPos = EditorGUILayout.Vector3Field("", oldPos);
+                    
+                    if (EditorGUI.EndChangeCheck()) p.SetPos(newPos);
                     
                     // the delete button
                     if (GUILayout.Button("-", GUILayout.Width(25)))
                     {
                         _toDelete.Add(i);
                     }
-                    
+
+                    GUI.color = c;
                     EditorGUILayout.EndHorizontal();
                 }
             }
@@ -85,7 +91,47 @@ namespace WaypointScripts
         {
             // draw a line between current and next point
             Color c = Handles.color;
-            
+            Handles.color = Color.gray;
+            Handles.DrawLine(p1.GetPos(), p2.GetPos());
+            Handles.color = c;
+        }
+
+        public bool DrawPoint(Waypoint p)
+        {
+            bool isChanged = false;
+
+            if (_selectedPoint == p)
+            {
+                Color c = Handles.color;
+                Handles.color = Color.green;
+                
+                EditorGUI.BeginChangeCheck();
+                Vector3 oldPos = p.GetPos();
+                Vector3 newPos = Handles.PositionHandle(oldPos, Quaternion.identity);
+
+                float handleSize = HandleUtility.GetHandleSize(newPos);
+                
+                Handles.SphereHandleCap(-1, newPos, Quaternion.identity, 0.25f * handleSize, EventType.Repaint);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    p.SetPos(newPos);
+                }
+
+                Handles.color = c;
+            }
+            else
+            {
+                Vector3 currPos = p.GetPos();
+                float handleSize = HandleUtility.GetHandleSize(currPos);
+                if (Handles.Button(currPos, Quaternion.identity, 0.25f * handleSize, 0.25f * handleSize,
+                        Handles.SphereHandleCap))
+                {
+                    isChanged = true;
+                    _selectedPoint = p;
+                }
+            }
+
+            return isChanged;
         }
 
         private void DrawPath(List<Waypoint> path)
