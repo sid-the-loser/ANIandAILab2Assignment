@@ -1,18 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathManager : MonoBehaviour
+namespace WaypointScripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PathManager : MonoBehaviour
     {
-        
-    }
+        [HideInInspector] [SerializeField] public List<Waypoint> path;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public List<Waypoint> GetPath()
+        {
+            if (path == null)
+            {
+                path = new List<Waypoint>();
+            }
+
+            return path;
+        }
+
+        public void CreateAddPoint()
+        {
+            Waypoint go = new Waypoint();
+            path.Add(go);
+        }
     }
 }
