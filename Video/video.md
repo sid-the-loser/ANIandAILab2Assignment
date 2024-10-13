@@ -1,3 +1,1 @@
-<iframe width="1903" height="748" src="https://www.youtube.com/embed/IQz5x9x4oNw" title="Animation &amp; AI Lab 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 The video is uploaded to youtube: [https://youtu.be/IQz5x9x4oNw](https://youtu.be/IQz5x9x4oNw)
