@@ -8,7 +8,8 @@ namespace WaypointScripts
     {
         [HideInInspector] [SerializeField] private List<Waypoint> path;
         [SerializeField] private GameObject prefab;
-        [SerializeField] private List<GameObject> prefabPoints;
+        
+        private List<GameObject> _prefabPoints;
         
         private int _currentPointIndex;
 
@@ -38,13 +39,13 @@ namespace WaypointScripts
 
         private void Start()
         {
-            prefabPoints = new List<GameObject>();
+            _prefabPoints = new List<GameObject>();
             // create prefab colliders for the path locations
             foreach (var p in path)
             {
                 GameObject go = Instantiate(prefab);
                 go.transform.position = p.GetPos();
-                prefabPoints.Add(go);
+                _prefabPoints.Add(go);
             }
         }
 
@@ -53,7 +54,7 @@ namespace WaypointScripts
             for (int i = 0; i < path.Count; i++)
             {
                 Waypoint p = path[i];
-                GameObject g = prefabPoints[i];
+                GameObject g = _prefabPoints[i];
                 g.transform.position = p.GetPos();
             }
         }

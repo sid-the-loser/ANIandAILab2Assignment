@@ -14,6 +14,10 @@ namespace NPCScripts
 
         [SerializeField] private Animator animator;
 
+        [SerializeField] private bool idleOnCollide;
+
+        private bool _collided;
+
         private bool _isWalking;
 
         private List<Waypoint> _thePath;
@@ -57,7 +61,7 @@ namespace NPCScripts
 
         private void Update()
         {
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && !(_collided && idleOnCollide))
             {
                 // toggle if any key is pressed
                 _isWalking = !_isWalking;
@@ -73,7 +77,13 @@ namespace NPCScripts
 
         private void OnTriggerEnter(Collider other)
         {
-            _target = pathManager.GetNextTarget();
+            if (!idleOnCollide) _target = pathManager.GetNextTarget();
+            else
+            {
+                _collided = true;
+                _isWalking = false;
+                animator.SetBool("isWalking", _isWalking);
+            }
         }
     }
 }

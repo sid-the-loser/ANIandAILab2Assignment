@@ -396,6 +396,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   rotateSpeed: 1
   animator: {fileID: 370922899}
+  idleOnCollide: 0
 --- !u!136 &370922897
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1217,6 +1218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC2
       objectReference: {fileID: 0}
+    - target: {fileID: 1319517528997712, guid: 1543549dcdf638d488bd40cb68dd9b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4927681395739018, guid: 1543549dcdf638d488bd40cb68dd9b8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.55936
@@ -1526,13 +1531,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.3945835, y: 0, z: 0, w: 0.91886014}
+  m_LocalPosition: {x: 0, y: 8.88, z: -12.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.48, y: 0, z: 0}
 --- !u!1001 &1033162848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2411,6 +2416,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   rotateSpeed: 0.5
   animator: {fileID: 1940211653}
+  idleOnCollide: 0
 --- !u!95 &1940211653 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95922273507661854, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
