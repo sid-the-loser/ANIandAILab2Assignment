@@ -396,7 +396,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   rotateSpeed: 1
   animator: {fileID: 370922899}
-  idleOnCollide: 0
+  idleOnCollide: 1
 --- !u!136 &370922897
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path:
-  - pos: {x: 2.539309, y: 0, z: -3.378066}
+  - pos: {x: 2.7651246, y: 0, z: -3.2783551}
   - pos: {x: 4.112545, y: 0, z: -0.29479456}
   - pos: {x: 6.501842, y: 0, z: -3.7307587}
   - pos: {x: 6.3729935, y: 0, z: -10.011631}
@@ -925,7 +925,6 @@ MonoBehaviour:
   - pos: {x: -4.4330363, y: 0, z: -10.009926}
   - pos: {x: 2.7706487, y: 0, z: -7.9847374}
   prefab: {fileID: 4256016201337358883, guid: 41540e7a0878dde4eba304e204da13e2, type: 3}
-  prefabPoints: []
 --- !u!4 &666767863
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,12 +1706,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path:
-  - pos: {x: -3.92, y: 0, z: -4.98}
-  - pos: {x: -4.8, y: 0, z: -2.07}
+  - pos: {x: -4.543533, y: 0, z: -4.474087}
+  - pos: {x: -4.7778907, y: 0, z: -1.7100055}
   - pos: {x: -1.21, y: 0, z: -1.44}
-  - pos: {x: -0.66, y: 0, z: -4.74}
+  - pos: {x: -1.02, y: 0, z: -4.768213}
   prefab: {fileID: 4256016201337358883, guid: 41540e7a0878dde4eba304e204da13e2, type: 3}
-  prefabPoints: []
 --- !u!1001 &1141795764
 PrefabInstance:
   m_ObjectHideFlags: 0
