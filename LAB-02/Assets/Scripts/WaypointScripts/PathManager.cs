@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +34,28 @@ namespace WaypointScripts
             _currentPointIndex = nextPointIndex;
             
             return path[nextPointIndex];
+        }
+
+        private void Start()
+        {
+            prefabPoints = new List<GameObject>();
+            // create prefab colliders for the path locations
+            foreach (var p in path)
+            {
+                GameObject go = Instantiate(prefab);
+                go.transform.position = p.GetPos();
+                prefabPoints.Add(go);
+            }
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < path.Count; i++)
+            {
+                Waypoint p = path[i];
+                GameObject g = prefabPoints[i];
+                g.transform.position = p.GetPos();
+            }
         }
     }
 }

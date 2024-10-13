@@ -12,11 +12,18 @@ namespace NPCScripts
         [SerializeField] private float moveSpeed;
         [SerializeField] private float rotateSpeed;
 
+        [SerializeField] private Animator animator;
+
+        private bool _isWalking;
+
         private List<Waypoint> _thePath;
         private Waypoint _target;
 
         private void Start()
         {
+            _isWalking = false;
+            animator.SetBool("isWalking", _isWalking);
+            
             _thePath = pathManager.GetPath();
             if (_thePath != null && _thePath.Count > 0)
             {
@@ -50,8 +57,18 @@ namespace NPCScripts
 
         private void Update()
         {
-            RotateTowardsTarget();
-            MoveForward();
+            if (Input.anyKeyDown)
+            {
+                // toggle if any key is pressed
+                _isWalking = !_isWalking;
+                animator.SetBool("isWalking", _isWalking);
+            }
+            
+            if (_isWalking)
+            {
+                RotateTowardsTarget();
+                MoveForward();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
